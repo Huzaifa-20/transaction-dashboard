@@ -1,46 +1,38 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Transaction Dashboard
 
-## Available Scripts
+This is a ReactJS + Typescript project created solely for Paymennt's recruitment assessment.
 
-In the project directory, you can run:
 
-### `npm start`
+## Run Locally
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Go to the project directory
 
-### `npm test`
+Install dependencies
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+  npm install
+```
 
-### `npm run build`
+Run the website
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+  npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Author's Notes
+In order to Sign In to the dashboard, use the following credentials:
+- Email: amr@gmail.com
+- Password: Password1
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+If you wish to use another email or password, feel free to go to the users.txt file present in the public folder of the project and replace the credentials. This is required as my implementation is reading users from a text file as one would read from a live database. Be sure to correctly add an email and a password seperated by a space.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Work Done
+In accordance with the provided document, I have completed the following tasks:
+- Used correct data structures, as required.
+- Displayed 1000 records in the homepage, grouped by the Transaction Time Stamp. Here I made the following assumptions:
+    - I grouped the transacition by date.
+    - I did not use reactQuery to cache the json response, nor did I use performcance enhancing useMemo hook to store the data in my component's state. This was intentionally left out as reading json data from a file does not pose any performance threats compared to fetching 1000's of records via api calls from a server.
+    - Furthermore, given the "Buttery smooth scrolling" statement in the document, I assumed that the requirement is to display a scrollable list of 1000 records, rather than a paginated table which, for obvious reasons, would have been the go to approach had this been a live server data fetching scenario.
+    - As per the instructions, I was free to play around with the UI so I went for something minimal as to not distract the user who will be visiting a data-intensive dashboard.

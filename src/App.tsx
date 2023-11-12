@@ -1,25 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { useAuth } from './context/authContext';
+import SignIn from './pages/SignIn';
+import Dashboard from './pages/Dashboard';
+import SecondaryScreen from './pages/SecondaryScreen';
 
 function App() {
+  const { isAuthenticated } = useAuth();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path='/*'
+          element={
+            isAuthenticated ? (
+              <Navigate to='/dashboard' />
+            ) : (
+              <Navigate to='/signin' />
+            )
+          }
+        />
+        <Route path='/signin' element={<SignIn />} />
+        <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/error' element={<SecondaryScreen />} />
+        <Route path='/detail-1' element={<SecondaryScreen />} />
+        <Route path='/detail-2' element={<SecondaryScreen />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
